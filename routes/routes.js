@@ -7,6 +7,7 @@ const registerdStudents = require('../controller/registerdStudents');
 routes.post('/register',controller.register);
 routes.post('/login',controller.login);
 routes.put('/update/:id',controller.update);
+routes.get('/getData',controller.getAllData)
 
 
 //add Details of students

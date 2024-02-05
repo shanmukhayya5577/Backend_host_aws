@@ -91,6 +91,31 @@ const login = async (req, res, next) => {
 
 }
 
+const getAllData = async(req,res,next)=>{
+    try{
+        const getAllData = await schema.registerSchema.find();
+        if(getAllData){
+            res.status(200).json({
+                message:'success',
+                data:getAllData
+            })
+        } else {
+            res.status(404).json({
+                message:'Data not found',
+                error:true
+            })
+        }
+    }catch(err){
+        next(err);
+        res.status(500).json({
+            message:'Something went wrong',
+            error:err
+        })
+    }
+    
+   
+}
+
 const update = async (req, res, next) => {
     const getId = req.params.id;
     const { name, password } = req.body;
@@ -123,4 +148,4 @@ const update = async (req, res, next) => {
 }
 
 
-module.exports = { register, login, update }
+module.exports = { register, login, update,getAllData }
