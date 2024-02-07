@@ -14,7 +14,7 @@ const router = require('./routes/routes');
 app.use('/',router);
 
 app.get('/',(req,res,next)=>{
-    res.send('Wel COme NodeJS')
+    res.send('Empty path, so page not found')
 });
 
 module.exports = app;
