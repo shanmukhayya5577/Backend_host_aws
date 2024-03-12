@@ -1,7 +1,7 @@
 const schema = require('../schema/schema');
 const bcryptjs = require('bcryptjs');
 const nodemailer = require('nodemailer');
-
+const jsonToken = require('jsonwebtoken');
 
 // var transporter = nodemailer.createTransport({
 //     service: "gmail",
@@ -65,8 +65,10 @@ const login = async (req, res, next) => {
         if (user) {
             const passwordMatch = await bcryptjs.compare(password, user.password);
             if (passwordMatch) {
+                const jwtToken = jsonToken.sign({email},process.env.secret_key,{ expiresIn: '1h' })
                 res.status(200).json({
                     message: 'Login successfylly',
+                    token:jwtToken,
                     isError: false,
                 })
             } else {
