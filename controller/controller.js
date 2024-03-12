@@ -52,7 +52,7 @@ const register = async (req, res, next) => {
     } catch (err) {
         next(err);
         res.status(200).json({
-            message: err,
+            message: `${err}`,
             isError: true,
         })
     }
@@ -84,7 +84,7 @@ const login = async (req, res, next) => {
     } catch (err) {
         next(err);
         res.status(500).json({
-            message: err,
+            message: `${err}`,
             isError: true
         })
     }
@@ -108,8 +108,8 @@ const getAllData = async(req,res,next)=>{
     }catch(err){
         next(err);
         res.status(500).json({
-            message:'Something went wrong',
-            error:err
+            message:`${err}`,
+            error:true
         })
     }
     
@@ -142,10 +142,35 @@ const update = async (req, res, next) => {
         next(err);
         res.status(200).json({
             error: true,
-            message: err
+            message: `${err}`
         });
     }
 }
 
+const deleteData = async (req,res,next) =>{
+    const getId = req.params.id;
+    try{
+        const findId = await schema.registerSchema.findOne({_id:getId});
+        if(findId){
+            await schema.registerSchema.findByIdAndDelete({_id:getId},{});
+            res.status(200).json({
+                error: false,
+                message: 'Deleted Successfully',
+            });
+        }else{
+            res.status(400).json({
+                error: true,
+                message: 'Id not found',
+            });
+        }
+    }catch(err){
+        res.status(500).json({
+            error: true,
+            message: `${err}`,
+        });
+    }
+   
+}
 
-module.exports = { register, login, update,getAllData }
+
+module.exports = { register, login, update,getAllData,deleteData }
