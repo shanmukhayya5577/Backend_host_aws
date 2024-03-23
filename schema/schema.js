@@ -16,8 +16,22 @@ const register = new schema({
     },
 });
 
-const applicationData = new schema({
-    name:{
+const studentsAllDetails = new schema({
+    firstName:{
+        type:String,
+        required:true
+    },
+    middleName:{
+        type:String,
+    },
+    lastName:{
+        type:String
+    },
+    fatherName:{
+        type:String,
+        required:true
+    },
+    gender:{
         type:String,
         required:true
     },
@@ -25,24 +39,34 @@ const applicationData = new schema({
         type:Number,
         required:true
     },
-    gender:{
+    current_address:{
+        type:String,
+    },
+    permanent_address:{
+        type:String
+    },
+    sslcSchool:{
         type:String,
         required:true
     },
-    applicationAmount:{
+    sslcMarks:{
         type:Number,
         required:true
     },
-    profilePicture:{
-        type: Buffer,
-        required: false
+    pucCollege:{
+        type:String,
+        required:true
     },
-    markSheet:{
-        type: Buffer,
-        required: false 
+    pucMarks:{
+        type:Number,
+        required:true
+    },
+    branch:{
+        type:String,
+        required:true
     }
 })
 
 const registerSchema = mongoose.model('register',register);
-const registerdStudents = mongoose.model('allDetails',applicationData)
+const registerdStudents = mongoose.model('allDetails',studentsAllDetails)
 module.exports = {registerSchema,registerdStudents};

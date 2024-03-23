@@ -1,11 +1,16 @@
 const express = require('express');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDoc = require('swagger-jsdoc');
+const cors = require('cors');
 const app = express();
+
 
 //importing app middleware
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
+
+//Enabling Cors Middleware
+app.use(cors());
 
 //connected BD
 require('dotenv').config();

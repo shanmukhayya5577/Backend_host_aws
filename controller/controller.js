@@ -33,8 +33,8 @@ const register = async (req, res, next) => {
             // let mailOptions = {
             //     from: "sanmukswamy238@gmail.com",
             //     to: email,
-            //     subject: "Registeration",
-            //     text: "Registration Successfulyy",
+            //     subject: "Registration Successful",
+            //     text: "Thank you for registering on our website !",
             //   };
 
             //   transporter.sendMail(mailOptions, function (error, info) {
@@ -44,6 +44,7 @@ const register = async (req, res, next) => {
             //       console.log("mail sent successfull");
             //     }
             //   });
+
             res.status(200).json({
                 message: 'Registerd successfylly',
                 isError: false,
