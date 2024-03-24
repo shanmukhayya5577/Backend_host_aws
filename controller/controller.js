@@ -34,7 +34,7 @@ const register = async (req, res, next) => {
                 from: "sanmukswamy238@gmail.com",
                 to: email,
                 subject: "Registration Successful",
-                text: "Thank you for registering on our website !",
+                text: "Thank you for registering and Visiting this website!",
               };
 
               transporter.sendMail(mailOptions, function (error, info) {
