@@ -3,13 +3,13 @@ const bcryptjs = require('bcryptjs');
 const nodemailer = require('nodemailer');
 const jsonToken = require('jsonwebtoken');
 
-// var transporter = nodemailer.createTransport({
-//     service: "gmail",
-//     auth: {
-//       user: "sanmukswamy238@gmail.com",
-//       pass: "aaui jtay uojq vchn",
-//     },
-//   });
+var transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: "sanmukswamy238@gmail.com",
+      pass: "aaui jtay uojq vchn",
+    },
+  });
 
 
 const register = async (req, res, next) => {
@@ -30,20 +30,20 @@ const register = async (req, res, next) => {
                 password: hash
             })
 
-            // let mailOptions = {
-            //     from: "sanmukswamy238@gmail.com",
-            //     to: email,
-            //     subject: "Registration Successful",
-            //     text: "Thank you for registering on our website !",
-            //   };
+            let mailOptions = {
+                from: "sanmukswamy238@gmail.com",
+                to: email,
+                subject: "Registration Successful",
+                text: "Thank you for registering on our website !",
+              };
 
-            //   transporter.sendMail(mailOptions, function (error, info) {
-            //     if (error) {
-            //       console.log("mail sent error", error);
-            //     } else {
-            //       console.log("mail sent successfull");
-            //     }
-            //   });
+              transporter.sendMail(mailOptions, function (error, info) {
+                if (error) {
+                  console.log("mail sent error", error);
+                } else {
+                  console.log("mail sent successfull");
+                }
+              });
 
             res.status(200).json({
                 message: 'Registerd successfylly',
