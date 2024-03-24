@@ -2,6 +2,7 @@ const express = require('express');
 const routes = express.Router();
 const controller = require('../controller/controller');
 const registerdStudents = require('../controller/registerdStudents');
+const { route } = require('../app');
 
 //registerd details
 
@@ -64,7 +65,8 @@ routes.get('/getData',controller.getAllData);
 
 //add Details of students
 routes.post('/studentsDetails',registerdStudents.addData);
-
+routes.get('/getAllStudents',registerdStudents.getAllStudentsDetails);
+routes.put('/updateStudents/:id',registerdStudents.editStudentsDetails)
 
 
 
